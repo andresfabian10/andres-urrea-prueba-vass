@@ -11,6 +11,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.user.training.vass.model.CreateUser;
 import com.user.training.vass.model.Training;
 import com.user.training.vass.service.TrainingLocalServiceUtil;
+import com.user.training.vass.web.constants.MVCCommandNames;
 import com.user.training.vass.web.constants.UserTrainingPortletKeys;
 
 import javax.portlet.ActionRequest;
@@ -22,7 +23,7 @@ import org.osgi.service.component.annotations.Component;
     immediate = true,
     property = {
         "javax.portlet.name=" + UserTrainingPortletKeys.USERTRAINING,
-        "mvc.command.name=/hola"
+        "mvc.command.name=" + MVCCommandNames.ACTION_CREATE_USER
     },
     service = MVCActionCommand.class
 )
