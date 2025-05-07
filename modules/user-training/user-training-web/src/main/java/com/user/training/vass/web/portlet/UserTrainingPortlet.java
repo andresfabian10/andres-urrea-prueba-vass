@@ -5,11 +5,20 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.module.configuration.ConfigurationException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.service.RoleLocalServiceUtil;
+import com.liferay.portal.kernel.servlet.SessionMessages;
+import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Portal;
+import com.liferay.portal.kernel.util.WebKeys;
+import com.user.training.vass.constant.Constants;
+import com.user.training.vass.model.Training;
+import com.user.training.vass.service.TrainingLocalServiceUtil;
 import com.user.training.vass.web.configuration.CustomWebConfiguration;
 import com.user.training.vass.web.constants.UserTrainingPortletKeys;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.portlet.Portlet;
 import javax.portlet.PortletException;
@@ -43,6 +52,13 @@ public class UserTrainingPortlet extends MVCPortlet {
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
+		
+		try {
+			isAdmin(renderRequest);
+		} catch (Exception e) {
+			LOG.error("Error: " + e);
+			e.printStackTrace();
+		}
 
 		super.doView(renderRequest, renderResponse);
 	}
@@ -61,5 +77,17 @@ public class UserTrainingPortlet extends MVCPortlet {
 		}
 
 		super.render(renderRequest, renderResponse);
+	}
+	
+	private void isAdmin(RenderRequest renderRequest) throws Exception {
+		 ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
+
+		    renderRequest.setAttribute("signedIn", themeDisplay.isSignedIn());
+	
+		    if (themeDisplay.isSignedIn()) {
+		    	SessionMessages.add(renderRequest, "admin-message");
+				renderRequest.setAttribute("isAdmin", true);
+		    }
+
 	}
 }

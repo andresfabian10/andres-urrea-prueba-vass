@@ -12,6 +12,7 @@ public class Constants {
 	public static final String PROP_TIMEOUT_SERVICES = "portal.training.vass.services.timeout";
 	public static final String JSON_NAME = "name";
 	public static final String JSON_EMAIL = "email";
+	public static final String ADMINISTRATOR = "Administrator";
 	
 
 }
