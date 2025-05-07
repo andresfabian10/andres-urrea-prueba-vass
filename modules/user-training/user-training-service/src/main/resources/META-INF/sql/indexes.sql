@@ -1,0 +1,1 @@
+create index IX_7CBD274F on TRAINING_Training (uuid_[$COLUMN_LENGTH:75$]);

@@ -1,0 +1,15 @@
+dependencies {
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+	compileOnly group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+    compileOnly group: "commons-httpclient", name: "commons-httpclient", version: "3.1"
+    compileInclude group: "commons-io", name: "commons-io", version: "2.0"
+	api project(":modules:user-training:user-training-api")
+}
+
+buildService {
+	apiDir = "../user-training-api/src/main/java"
+	testDir = "../user-training-test/src/testIntegration/java"
+}
+
+group = "com.user.training.vass"

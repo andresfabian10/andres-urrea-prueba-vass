@@ -1,0 +1,7 @@
+Bundle-Name: user-training-web
+Bundle-SymbolicName: com.user.training.vass.web
+Bundle-Version: 1.0.0
+Export-Package: com.user.training.vass.web.constants
+
+
+

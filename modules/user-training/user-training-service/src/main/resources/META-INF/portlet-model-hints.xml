@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.user.training.vass.model.Training">
+		<field name="uuid" type="String" />
+		<field name="trainingId" type="long" />
+		<field name="userName" type="String" />
+		<field name="email" type="String" />
+	</model>
+</model-hints>

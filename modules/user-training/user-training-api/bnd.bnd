@@ -1,0 +1,11 @@
+Bundle-Name: user-training-api
+Bundle-SymbolicName: com.user.training.vass.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.user.training.vass.exception,\
+	com.user.training.vass.api,\
+	com.user.training.vass.model,\
+	com.user.training.vass.service,\
+	com.user.training.vass.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../user-training-service/service.xml

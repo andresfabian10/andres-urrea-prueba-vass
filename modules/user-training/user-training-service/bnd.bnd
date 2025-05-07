@@ -1,0 +1,9 @@
+Bundle-Name: user-training-service
+Bundle-SymbolicName: com.user.training.vass.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-dsannotations-options: inherit
+
+Include-Resource:\
+@commons-httpclient-3.1.jar

@@ -1,0 +1,7 @@
+Bundle-Name: Prueba
+Bundle-SymbolicName: com.prueba
+Bundle-Version: 1.0.0
+Export-Package: com.prueba.constants
+Provide-Capability:\
+	liferay.language.resources;\
+		resource.bundle.base.name="content.Language"
