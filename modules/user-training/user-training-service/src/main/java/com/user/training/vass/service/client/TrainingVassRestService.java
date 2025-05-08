@@ -17,6 +17,12 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.PropsUtil;
 import javax.ws.rs.core.MediaType;
 
+import org.osgi.service.component.annotations.Component;
+
+
+@Component(
+	    service = TrainingVassRestApi.class
+	)
 public class TrainingVassRestService implements TrainingVassRestApi {
 	
 	private static final Log LOG = LogFactoryUtil.getLog(TrainingVassRestService.class);
@@ -25,8 +31,10 @@ public class TrainingVassRestService implements TrainingVassRestApi {
 	@Override
 	public RestUtilResponse createUserwithObject(CreateUser createUser) {
 		final String URL_CREATE_USER = PropsUtil.get(Constants.PROP_URL_CREATE_USER_POST);
+		final String BASIC_AUTH = PropsUtil.get(Constants.PROP_BASIC_AUTH);
 		LinkedHashMap<String, String> parameters = new LinkedHashMap<>();
 		LinkedHashMap<String, String> headers = new LinkedHashMap<>();
+		headers.put(Constants.JSON_REQ_AUTHORIZATION, "Basic ".concat(BASIC_AUTH));
 		
 		JSONObject jsonObjectRequest = JSONFactoryUtil.createJSONObject();
 		jsonObjectRequest.put(Constants.JSON_NAME, createUser.getName());

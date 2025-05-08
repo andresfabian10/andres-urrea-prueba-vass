@@ -48,9 +48,7 @@ public class UserTrainingPanelApp extends MVCPortlet {
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
-		 ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
-
-
+		
 		        List<Training> registers = TrainingLocalServiceUtil.getTrainings(-1, -1);
 		        LOG.info("----------->: " + registers.toString());
 		        renderRequest.setAttribute("registers", registers);

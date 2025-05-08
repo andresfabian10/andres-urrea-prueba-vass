@@ -10,14 +10,16 @@
 
 <portlet:actionURL name="<%=MVCCommandNames.ACTION_CREATE_USER%>"
 	var="actionURL" />
+	
+<portlet:actionURL name="<%=MVCCommandNames.ACTION_CREATE_USER_OBJECTS%>"
+	var="actionObjectURL" />
 
 <liferay-ui:error key="nameRequired" message="El nombre es obligatorio." />
-<liferay-ui:error key="emailInvalid"
-	message="El correo electrónico no es válido." />
+<liferay-ui:error key="emailInvalid" message="El correo electrónico no es válido." />
+<liferay-ui:error key="errorService" message="Error en consumir el servicio" />
 
 <%
-CustomWebConfiguration n2f3WebConfiguration = (CustomWebConfiguration) request
-		.getAttribute(CustomWebConfiguration.class.getName());
+CustomWebConfiguration n2f3WebConfiguration = (CustomWebConfiguration) request.getAttribute(CustomWebConfiguration.class.getName());
 %>
 
 
@@ -31,8 +33,9 @@ CustomWebConfiguration n2f3WebConfiguration = (CustomWebConfiguration) request
 			<%=n2f3WebConfiguration.welcomeTitle()%><br />
 
 		</p>
+		
 		<aui:form action="<%=actionURL%>" method="post">
-			<aui:input name="name" label="form.label.name" required="true">
+			<aui:input name="name" label="Escribe tu nombre" required="true">
 				<aui:validator name="required" />
 			</aui:input>
 
@@ -43,10 +46,19 @@ CustomWebConfiguration n2f3WebConfiguration = (CustomWebConfiguration) request
 			</aui:input>
 			<aui:button type="submit" value="Guardar" />
 		</aui:form>
+		
+		
+		
+	
+		
+		
 	</c:when>
 	<c:otherwise>
-
-		<h2>ERES ADMINISTRADOR</h2>
+	
+		<div class="alert alert-info">
+			
+			<strong class="lead">Info:</strong>You Are Administrator!
+		</div>
 	</c:otherwise>
 
 </c:choose>
